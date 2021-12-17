@@ -2,10 +2,23 @@ document.addEventListener("DOMContentLoaded", function() {
     fetchBooks();
 });
 
+// function fetchUserInfo(userId){
+//     fetch(`http://localhost:3000/users/${userId}`)
+//     .then(res => res.json())
+//     .then(data => {
+//         console.log(data)
+//     })
+// }
 
-// fetch('http://localhost:3000/users')
-// .then(res => res.json())
-// .then(data => console.log(data[4]))
+// fetchUserInfo(7);
+
+// const currentUser = function fetchUserInfo(){
+//     fetch(`http://localhost:3000/users/7`)
+//     .then(res => res.json())
+//     .then(data => {
+//         return data
+//     })
+// }
 
 function fetchBooks(){
     fetch('http://localhost:3000/books')
@@ -67,16 +80,20 @@ function showBookDetails(book){
         const getUl = document.querySelector('.ul-class');
         const li = document.createElement('li');
         getUl.appendChild(li).innerText = 'mike'
-        console.log(book.users)
 
-        // fetch(`http://localhost:3000/books/${book.id}`, {
-        //     method: 'PATCH',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         Accept: 'application/json',
-        //     }
-        //     body: JSON.stringify({})
-        // })
+        fetch(`http://localhost:3000/books/${book.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify({
+                "id": 11,
+                "username": "mike"
+            })
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
     })
 }
 
